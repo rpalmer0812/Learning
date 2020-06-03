@@ -16,12 +16,10 @@ class User:
     def reset_login_attempts(self):
         self.login_attempts = 0
 
-
-user1 = User('James', 'Chou')
-
-user1.describe_user()
-
-print(user1.login_attempts)
+if __name__ == "__main__":
+    user1 = User('James', 'Chou')
+    user1.describe_user()
+    print(user1.login_attempts)
 
 #user1.increment_login_attempts()
 #user1.increment_login_attempts()
@@ -40,6 +38,6 @@ class Admin(User):
         print(f"{self.first_name} {self.privileges[0]}, {self.privileges[1]} and {self.privileges[2]}.")
 
 
-admin1 = Admin('Alanna', 'Okuda')
+#admin1 = Admin('Alanna', 'Okuda')
 
-admin1.show_privileges()
+#admin1.show_privileges()
