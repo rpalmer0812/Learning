@@ -16,10 +16,6 @@ def winner(userlist):
 winning = winner(userlist)
 print(winning)
 
-
-
-
-
 my_ticket = [3, 5, 7, 4]
 count = 0
 active = True
