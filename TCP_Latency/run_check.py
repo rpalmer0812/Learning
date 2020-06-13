@@ -29,21 +29,22 @@ def Average(lst):
     avg = sum / len(lst)
     return avg
 
-#def median_value(lst):
-#    int_list = []
-#    for i in lst:
-#        int_list.append(float(lst[i]))
-#    return int_list
+def median_value(userlist):
+    med_ping = 0
+    med_ping = statistics. median(userlist)
+    return med_ping
 
-#m_value = median_value(final)
-#print(m_value)
+m_value = median_value(final)
 
+
+median_ping = median_value(new_final)
 max_ping = round(float(max(new_final)))
 min_ping = round(float(min(new_final)))
 avg_ping = round(float(Average(new_final)))
 
 print(f"\nMaximum ping: {max_ping}")
 print(f"Minimum ping: {min_ping}")
+print(median_ping)
 print(f"\nAverage ping: {avg_ping}")
 
 if avg_ping < 20 and max_ping < 25:
@@ -51,9 +52,9 @@ if avg_ping < 20 and max_ping < 25:
 elif avg_ping < 20 and max_ping > 24:
     print("Internet is generally smooth with some odd spikes.\n")
 elif avg_ping > 39 and max_ping > 24:
-    print("Internet is congested.\n")
+    print("Internet is extremely congested.\n")
 elif avg_ping > 19 and max_ping > 24:
-    print("Internet is slightly congested and only slightly impacted.\n")
+    print("Internet is congested and is noticeably impacted.\n")
 
 #Regex.Match(@"""id"":143331539043251,", @"""id"":([0-9]+),").Groups[1].Value
 
