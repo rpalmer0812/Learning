@@ -3,24 +3,13 @@ import subprocess
 import re
 import statistics
 
+print("Network Performance Check")
+
 process = subprocess.run('python tcp_latency.py --run 50 8.8.8.8', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
 output = process.stdout
 
-
 final = re.findall(r'(?<=time=)[0-9.]+', output)
-
-#print(final)
-
 new_final = [float(i) for i in final]
-#print(new_final)
-
-#def toInt(lst):
-#    for i in lst:
-#        new_final = float(final.pop(i))
-#    return new_final
-
-#new_list = toInt(final)
-#print(new_list)
 
 def Average(lst):
     sum = 0
@@ -29,24 +18,32 @@ def Average(lst):
     avg = sum / len(lst)
     return avg
 
-def median_value(userlist):
-    med_ping = 0
-    med_ping = statistics. median(userlist)
-    return med_ping
-
-m_value = median_value(final)
-
-
-median_ping = median_value(new_final)
+median_ping = round(statistics.median(new_final))
 max_ping = round(float(max(new_final)))
 min_ping = round(float(min(new_final)))
 avg_ping = round(float(Average(new_final)))
 
+def outliers(lst):
+    outlier_list = []
+    for i in lst:
+        if i > (2 * avg_ping):
+            outlier_list.append(i)
+    return (outlier_list)
+
+outlier_list = outliers(new_final)
+
+if len(outlier_list) != 0:
+    print(f"\nOutlier pings include:")
+    print(outlier_list)
+else:
+    pass
+
 print(f"\nMaximum ping: {max_ping}")
 print(f"Minimum ping: {min_ping}")
-print(median_ping)
-print(f"\nAverage ping: {avg_ping}")
+print(f"\nMedian ping: {median_ping}")
+print(f"Average ping: {avg_ping}\n")
 
+print("Network diagnosis:")
 if avg_ping < 20 and max_ping < 25:
     print("Internet is looking good.\n")
 elif avg_ping < 20 and max_ping > 24:
