@@ -1,7 +1,7 @@
 import yagmail
 
 sender_email = 'rpalmer1502@gmail.com'
-receiver_email = 'alcyonmonocero@gmail.com'
+receiver_email = 'jchou0812@gmail.com'
 subject = "Check THIS out"
 sender_password = input(f'Please, enter the password for {sender_email}:\n')
 yag = yagmail.SMTP(user=sender_email, password=sender_password)

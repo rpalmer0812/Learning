@@ -11,9 +11,26 @@ class Car:
     def driver_car(self):
         self.condition = "used"
 
+class ElectricCar(Car):
+    condition = "new"
+    def __init__(self, model, colour, mpg, battery_type):
+        self.model = model
+        self.colour = colour
+        self.mpg = mpg
+        self.battery_type = battery_type
 
-my_car = Car("DeLorean", "silver", 88)
+    def driver_car(self):
+        self.condition = "like new"
+
+
+
+my_car = ElectricCar("DeLorean", "silver", 88, "molten salt")
 print(my_car.condition)
 my_car.driver_car()
 print(my_car.condition)
 my_car.display_car()
+
+print(my_car.battery_type)
+print(my_car.condition)
+my_car.driver_car()
+print(my_car.condition)
